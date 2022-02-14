@@ -1,41 +1,28 @@
 var i = 0;
 let Data = [];
-let imgUrl = "";
+let imgUrl;
 
-function handleFileSelect(event) {
-  let files = event.target.files;
-  
-  // use first file from the list
-  let f = files[0];
+// document.querySelector("#productImage").addEventListener("change", function () {
+//   const reader = new FileReader();
 
-  if (!f.type.match('image.*')) {
-    continue;
-  }
-
-  let reader = new FileReader();
-
-  reader.onload = () => {
-    imgUrl = reader.result;
-  }
-
-  localStorage.setItem("imgUrl", imgUrl);
-
-}
+//   reader.addEventListener("load", () => {
+//     localStorage.setItem("imgUrl", reader.result);
+//   });
+// });
 
 function tosubmit() {
   if (localStorage.getItem("Data")) {
     Data = eval(localStorage.getItem("Data"));
   }
-
-  if(localStorage.getItem("imgUrl")) {
-    imgUrl = eval(localStorage.getItem("imgUrl"));
-  }
-
   i = Data.length;
+
+  // if (localStorage.getItem("imgUrl")) {
+  //   imgUrl = eval(localStorage.getItem("imgUrl"));
+  // }
 
   const currObject = {
     id: i,
-    imgUrl: imgUrl,
+    // url: imgUrl,
     productName: document.getElementById("pname").value,
     unitMeasure: document.getElementById("unit").value,
     itemPrice: document.getElementById("price").value,
@@ -50,14 +37,12 @@ function tosubmit() {
 function reassign() {
   var items = eval(localStorage.getItem("Data"));
 
-  console.log(items[0].imgUrl);
+  console.log(items);
 
   var table = document.getElementById("table");
 
   for (var i = 0; i < items.length; i++) {
     var row = table.insertRow();
-
-    // <td><div class="w-10 h-10"><img src=${items[i].imgUrl} class="object-fit: cover" alt="product-image"/><div></td>
 
     row.innerHTML = `<tr>
     <th scope="row">${i}</th>
