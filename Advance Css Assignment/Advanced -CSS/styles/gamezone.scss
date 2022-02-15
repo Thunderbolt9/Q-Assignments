@@ -1,0 +1,31 @@
+$bg-color: rgb(20, 20, 20);
+
+div {
+  width: 100px;
+  height: 100px;
+  margin-top: 180px;
+  transform-origin: 200% center;
+  position: relative;
+  animation: rotate 3s linear infinite;
+}
+
+div:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  border-radius: 50%;
+  width: 100%;
+  margin: auto;
+  background: blue;
+  animation: rotate 3s linear reverse infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+body {
+  background: $bg-color;
+} /* The best color ever */

@@ -1,0 +1,42 @@
+div {
+  width: 100px;
+  height: 100px;
+  margin-top: 180px;
+  -webkit-transform-origin: 200% center;
+          transform-origin: 200% center;
+  position: relative;
+  -webkit-animation: rotate 3s linear infinite;
+          animation: rotate 3s linear infinite;
+}
+
+div:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  border-radius: 50%;
+  width: 100%;
+  margin: auto;
+  background: blue;
+  animation: rotate 3s linear reverse infinite;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+body {
+  background: #141414;
+}
+
+/* The best color ever */
+/*# sourceMappingURL=gamezone.css.map */
