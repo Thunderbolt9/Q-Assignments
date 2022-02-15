@@ -1,14 +1,5 @@
-var i = 0;
+let i;
 let Data = [];
-let imgUrl;
-
-// document.querySelector("#productImage").addEventListener("change", function () {
-//   const reader = new FileReader();
-
-//   reader.addEventListener("load", () => {
-//     localStorage.setItem("imgUrl", reader.result);
-//   });
-// });
 
 function tosubmit() {
   if (localStorage.getItem("Data")) {
@@ -16,13 +7,8 @@ function tosubmit() {
   }
   i = Data.length;
 
-  // if (localStorage.getItem("imgUrl")) {
-  //   imgUrl = eval(localStorage.getItem("imgUrl"));
-  // }
-
   const currObject = {
     id: i,
-    // url: imgUrl,
     productName: document.getElementById("pname").value,
     unitMeasure: document.getElementById("unit").value,
     itemPrice: document.getElementById("price").value,
@@ -50,8 +36,8 @@ function reassign() {
     <td>${items[i].prodDescription}</td>
     <td>${items[i].itemPrice}</td>
     <td>${items[i].unitMeasure}</td>
-    <td><button class="btn btn-primary rounded-pill px-4 mx-4 shadow" onclick=edit(${items[i].id})>Edit</button></td>
-    <td><button class="btn btn-primary rounded-pill px-4 mx-4 shadow" onclick=del(${items[i].id})>Delete</button></td>
+    <td><button class="btn btn-primary rounded-pill px-4 mx-4 shadow" onclick=edit(${i})>Edit</button></td>
+    <td><button class="btn btn-primary rounded-pill px-4 mx-4 shadow" onclick=del(${i})>Delete</button></td>
   </tr>`;
   }
 }
