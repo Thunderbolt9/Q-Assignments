@@ -3,6 +3,7 @@ You're speaking with Ronaldo. May I have your name, please? Yes, sure. My name i
 What is your phone number? It is 9876535362 as mentioned in the book Diary. 
 Thank you so much for providing the info!`;
 
+// Task - 1
 // First extracting the sentence from the string using match function and storing it in an array;
 const sentenceArray = questionStr.match(/(.*?(?:\.|\?|!))(?: |$)/g);
 
@@ -21,8 +22,15 @@ const ansArray = sentenceArray
   })
   .filter((elements) => elements != undefined);
 
-// Printing solution of Q.1 -> Task 1
-for (var index = 0; index < ansArray.length; index++) {
-  const ansString = `${index + 1}. ${ansArray[index]}`;
+// Task - 2
+/* Here I used map to basically traverse through ans array from task one and then 
+mask any number present using regex */
+const maskedNumbersArray = ansArray.map((item) => {
+  return item.replace(/[0-9]/g, "X");
+});
+
+// Final Output
+for (var index = 0; index < maskedNumbersArray.length; index++) {
+  const ansString = `${index + 1}. ${maskedNumbersArray[index]}`;
   console.log(ansString);
 }
