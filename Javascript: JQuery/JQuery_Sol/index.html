@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Popins font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>JQuery Assignment</title>
+    <style>
+      .body {
+        font-size: 0.9rem;
+      }
+
+      @keyframes rollout {
+        0% {
+          transform: translateY(-100px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .comments {
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        width: 70%;
+        margin: auto;
+      }
+
+      .infoPallete {
+        padding: 1rem;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+        border-radius: 0.25rem;
+        margin-bottom: 10px;
+        cursor: pointer;
+        animation: 0.6s rollout;
+      }
+
+      .infoPallete:hover {
+        background-color: #0264ce;
+        transform: scale(1.01);
+        color: #f6f6f6;
+        transition: all 200ms ease;
+      }
+
+      .title {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      #load {
+        background-color: #007bff;
+        color: #f6f6f6;
+        padding: 0.5rem;
+        border: none;
+        width: 8%;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: auto;
+        font-size: medium;
+      }
+
+      #load:hover {
+        transform: scale(1.1);
+        background-color: #f6f6f6;
+        color: #007bff;
+        border: 1px solid #007bff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 style="text-align: center; font-family: 'Poppins', sans-serif">
+      Comments
+    </h1>
+    <div class="comments"></div>
+
+    <div style="text-align: center; margin-top: 1rem">
+      <button id="load">Load Data</button>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        var $comments = $(".comments");
+        $("#load").click(function () {
+          $.ajax({
+            type: "GET",
+            url: "https://jsonplaceholder.typicode.com/posts",
+            dataType: "json",
+            success: function (posts) {
+              $.each(posts, function (i, post) {
+                var card = `<div id="${post.id}" class="infoPallete">
+                  <h3 class="title">${post.title}</h3>
+                  <p class="body">${post.body}</p>
+                </div>`;
+                $comments.append(card);
+              });
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
